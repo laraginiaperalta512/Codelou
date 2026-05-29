@@ -1,0 +1,19 @@
+{
+  "name": "Mandal-Art Goal Chart",
+  "short_name": "Mandal-Art",
+  "description": "A 9×9 Mandal-Art (Mandala Chart) goal-setting grid.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0f1115",
+  "theme_color": "#0f1115",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

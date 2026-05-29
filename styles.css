@@ -174,10 +174,28 @@ main { max-width: 1100px; margin: 0 auto; padding: 1rem; }
 }
 
 @media (max-width: 640px) {
-  h1 { font-size: 1.3rem; }
+  body {
+    /* respect the iPhone notch / home indicator when run full-screen */
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+             env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  main { padding: .6rem; }
+  h1 { font-size: 1.2rem; }
   .subtitle { display: block; margin: .25rem 0 0; }
-  .cell textarea { font-size: .62rem; padding: 3px; }
+  .tagline { font-size: .82rem; }
+
+  /* Fit the whole 9×9 grid to the screen width (no horizontal scroll). */
+  .chart-scroll { overflow-x: visible; }
+  .chart { min-width: 0; gap: 5px; }
+  .block { gap: 2px; padding: 2px; border-radius: 7px; }
+  .cell textarea { font-size: .52rem; padding: 2px; border-radius: 4px; }
+  .cell.main textarea { font-size: .56rem; }
+
+  .toolbar button { padding: .45rem .6rem; font-size: .8rem; }
 }
+
+/* Pinch-to-zoom stays enabled (we never set user-scalable=no), so on a
+   phone you can view the full chart, then zoom into any block to type. */
 
 /* Print: clean, light, fits a page */
 @media print {
