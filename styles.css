@@ -1,0 +1,194 @@
+:root {
+  --bg: #0f1115;
+  --panel: #171a21;
+  --ink: #e7e9ee;
+  --muted: #9aa3b2;
+  --line: #2a2f3a;
+  --accent: #e0b341;       /* gold — main goal */
+  --accent-soft: #3a2f12;
+  --cell-bg: #1d212b;
+  --cell-focus: #232838;
+  --radius: 10px;
+
+  /* Eight distinct, muted block hues */
+  --b0: #5b8def;
+  --b1: #e0b341;
+  --b2: #3fbf9b;
+  --b3: #b06ae0;
+  --b5: #e07a5f;
+  --b6: #4ec0d8;
+  --b7: #d65f8f;
+  --b8: #8bc34a;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  line-height: 1.4;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  padding: 1.5rem 1rem 1.25rem;
+  text-align: center;
+}
+.header-inner { max-width: 820px; margin: 0 auto; }
+h1 {
+  margin: 0 0 .35rem;
+  font-size: 1.6rem;
+  letter-spacing: .02em;
+}
+.subtitle {
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-left: .5rem;
+}
+.tagline { margin: 0; color: var(--muted); font-size: .92rem; }
+
+main { max-width: 1100px; margin: 0 auto; padding: 1rem; }
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.toolbar button {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: .5rem .85rem;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.toolbar button:hover { background: #20242e; border-color: #3a4150; }
+.toolbar button:active { transform: translateY(1px); }
+.save-status { margin-left: auto; color: var(--muted); font-size: .8rem; }
+
+/* Chart */
+.chart-scroll { overflow-x: auto; padding-bottom: .5rem; }
+.chart {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  min-width: 720px;
+}
+.block {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 4px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+/* Center block gets a gold frame */
+.block.block-4 { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent-soft) inset; }
+
+/* Cells */
+.cell {
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+.cell textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  border: none;
+  border-radius: 6px;
+  background: var(--cell-bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: .72rem;
+  line-height: 1.2;
+  padding: 6px;
+  text-align: center;
+  display: flex;
+  overflow: auto;
+  transition: background .15s, box-shadow .15s;
+}
+.cell textarea::placeholder { color: #5a6373; }
+.cell textarea:focus {
+  outline: none;
+  background: var(--cell-focus);
+  box-shadow: 0 0 0 2px rgba(224, 179, 65, .35);
+}
+
+/* Main goal cell */
+.cell.main textarea {
+  background: linear-gradient(160deg, #2a2208, #1d1907);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: .8rem;
+  box-shadow: 0 0 0 1px var(--accent) inset;
+}
+
+/* Sub-goal (anchor) cells: tinted per block */
+.cell.subgoal textarea {
+  font-weight: 600;
+  color: #fff;
+}
+.block-0 .cell.subgoal textarea, .cell.subgoal[data-tint="0"] textarea { background: color-mix(in srgb, var(--b0) 30%, var(--cell-bg)); box-shadow: 0 0 0 1px var(--b0) inset; }
+.block-1 .cell.subgoal textarea, .cell.subgoal[data-tint="1"] textarea { background: color-mix(in srgb, var(--b1) 30%, var(--cell-bg)); box-shadow: 0 0 0 1px var(--b1) inset; }
+.block-2 .cell.subgoal textarea, .cell.subgoal[data-tint="2"] textarea { background: color-mix(in srgb, var(--b2) 30%, var(--cell-bg)); box-shadow: 0 0 0 1px var(--b2) inset; }
+.block-3 .cell.subgoal textarea, .cell.subgoal[data-tint="3"] textarea { background: color-mix(in srgb, var(--b3) 30%, var(--cell-bg)); box-shadow: 0 0 0 1px var(--b3) inset; }
+.block-5 .cell.subgoal textarea, .cell.subgoal[data-tint="5"] textarea { background: color-mix(in srgb, var(--b5) 30%, var(--cell-bg)); box-shadow: 0 0 0 1px var(--b5) inset; }
+.block-6 .cell.subgoal textarea, .cell.subgoal[data-tint="6"] textarea { background: color-mix(in srgb, var(--b6) 30%, var(--cell-bg)); box-shadow: 0 0 0 1px var(--b6) inset; }
+.block-7 .cell.subgoal textarea, .cell.subgoal[data-tint="7"] textarea { background: color-mix(in srgb, var(--b7) 30%, var(--cell-bg)); box-shadow: 0 0 0 1px var(--b7) inset; }
+.block-8 .cell.subgoal textarea, .cell.subgoal[data-tint="8"] textarea { background: color-mix(in srgb, var(--b8) 30%, var(--cell-bg)); box-shadow: 0 0 0 1px var(--b8) inset; }
+
+/* About */
+.about {
+  margin: 1.5rem 0 0;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: .75rem 1rem;
+}
+.about summary { cursor: pointer; font-weight: 600; }
+.about-body { color: var(--muted); font-size: .9rem; }
+.about-body ul { padding-left: 1.2rem; }
+.about-body strong { color: var(--ink); }
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  margin-top: 2rem;
+  padding: 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
+@media (max-width: 640px) {
+  h1 { font-size: 1.3rem; }
+  .subtitle { display: block; margin: .25rem 0 0; }
+  .cell textarea { font-size: .62rem; padding: 3px; }
+}
+
+/* Print: clean, light, fits a page */
+@media print {
+  :root {
+    --bg: #fff; --panel: #fff; --ink: #111; --muted: #555;
+    --line: #bbb; --cell-bg: #fff; --cell-focus: #fff;
+  }
+  .site-header, .toolbar, .about, .site-footer { display: none !important; }
+  body { background: #fff; }
+  .chart-scroll { overflow: visible; }
+  .chart { min-width: 0; gap: 6px; }
+  .cell textarea { color: #111 !important; background: #fff !important; }
+  .cell.main textarea { color: #000 !important; background: #fff !important; }
+}

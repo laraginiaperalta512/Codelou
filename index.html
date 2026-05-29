@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mandal-Art · 9×9 Goal Chart</title>
+  <meta name="description" content="A Mandal-Art (Mandala Chart) goal-setting app — a 9×9 grid that breaks one main goal into 8 sub-goals and 64 actions." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <h1>マンダラチャート <span class="subtitle">Mandal-Art Goal Chart</span></h1>
+      <p class="tagline">
+        Put one goal in the center. Surround it with 8 sub-goals, and give each
+        sub-goal 8 concrete actions. 1 + 8 + 64 = 81 cells.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <section class="toolbar" aria-label="Actions">
+      <button id="btn-example" type="button">Load example</button>
+      <button id="btn-clear" type="button">Clear all</button>
+      <button id="btn-export" type="button">Export JSON</button>
+      <button id="btn-import" type="button">Import JSON</button>
+      <button id="btn-print" type="button">Print / PDF</button>
+      <input id="file-input" type="file" accept="application/json" hidden />
+      <span id="save-status" class="save-status" aria-live="polite"></span>
+    </section>
+
+    <div class="chart-scroll">
+      <div id="chart" class="chart" role="grid" aria-label="Mandal-Art 9 by 9 grid"></div>
+    </div>
+
+    <details class="about">
+      <summary>What is Mandal-Art?</summary>
+      <div class="about-body">
+        <p>
+          <strong>Mandal-Art</strong> (マンダラチャート) is a Japanese goal-setting and
+          brainstorming method created by designer <em>Hiroaki Imaizumi</em> and
+          popularized by consultant <em>Yasuo Matsumura</em>. It became widely known
+          after baseball star <em>Shohei Ohtani</em> used it as a high-schooler.
+        </p>
+        <ul>
+          <li><strong>Center block:</strong> your main goal sits in the very middle, ringed by 8 sub-goals.</li>
+          <li><strong>Outer blocks:</strong> each sub-goal moves to the center of one outer block, surrounded by 8 actions that make it happen.</li>
+          <li>Editing a sub-goal updates both its copies automatically.</li>
+          <li>Everything you type is saved in your browser (localStorage).</li>
+        </ul>
+      </div>
+    </details>
+  </main>
+
+  <footer class="site-footer">
+    <p>Built with the Mandal-Art (9-grid) method. Your data stays in your browser.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
